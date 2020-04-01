@@ -1,0 +1,2 @@
+module Web::ProductsHelper
+end

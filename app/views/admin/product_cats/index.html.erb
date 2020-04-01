@@ -1,0 +1,67 @@
+<%= hidden_field_tag :active_nav, admin_product_cats_path %>
+<%# ========= HEAD ========= %>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Product Cat</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ========= Content ========= %>
+<section class="content">
+  <div class="container-fluid">
+    <div class="card p-3">
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <%= form_tag(admin_product_cats_path, :method => "get", class: 'form-inline') do %>
+            <div class="input-group">
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to 'Create', new_admin_product_cat_path, class: 'btn btn-success pl-5 pr-5' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type Product</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @product_cats.each do |product_cat| %>
+                <tr>
+                  <th scope="row"><%= product_cat.id %></th>
+                  <td><%= product_cat.name %></td>
+                  <td><%= product_cat.typeProduct %></td>
+                  <td>
+                    <%= link_to 'Edit', edit_admin_product_cat_path(product_cat.id), class: 'btn btn-warning' %>
+                    <%= link_to  admin_product_cat_path(product_cat.id), class: 'btn btn-info' do %>
+                      <i class="fas fa-eye"></i>
+                    <% end %>
+                    <%= link_to 'X', admin_product_cat_path(product_cat.id), class: "btn btn-danger" , method: :delete,  data: { confirm: "Are you sure ?" } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <%= paginate @product_cats %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

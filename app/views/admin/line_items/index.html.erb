@@ -1,0 +1,76 @@
+<%= hidden_field_tag :active_nav, admin_line_items_path %>
+<%# ========= HEAD ========= %>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Shopping cart</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <%# <li class="breadcrumb-item active">ユーザー詳細</li> %>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ========= Content ========= %>
+<section class="content">
+  <div class="container-fluid">
+    <div class="card p-3">
+      <div class="row mb-4">
+        <div class="col-md-6">
+
+          <%= form_tag(admin_line_items_path, :method => "get", class: 'form-inline') do %>
+            <div class="input-group">
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+          <% end %>
+
+        </div>
+        <div class="col-md-6">
+          <%# <%= link_to 'Create', new_admin_product_cat_path, class: 'btn btn-success pl-5 pr-5' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Sub total</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Created date</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @line_items.each do |line_item| %>
+                <tr>
+                  <th scope="row"><%= line_item.id %></th>
+                  <td><%= line_item.customer.email%></td>
+                  <td><%= number_to_currency(line_item.cart.sub_total) %></td>
+                  <td><%= line_item.cart.total_quantity %></td>
+                  <td><%= line_item.created_at.strftime('%d-%m-%Y') %></td>
+                  <td>
+                    <%= link_to  admin_line_item_path(line_item.id), class: 'btn btn-info' do %>
+                      <i class="fas fa-eye"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <%= paginate @line_items %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

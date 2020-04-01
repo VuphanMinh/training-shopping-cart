@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Demo Shop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="/Alte_admin/adminlte.min.css" />
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  </head>
+
+  <body class="hold-transition">
+  <% if flash.present? %>
+    <div class="alert alert-danger d-block" role="alert">
+    <ul>
+      <% flash.each do |message|%>
+        <li><%= alert %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="login-page">
+      <%= yield %>
+  </div>
+     <script  src="/Alte_admin/adminlte.min.js"></script>
+  </body>
+</html>

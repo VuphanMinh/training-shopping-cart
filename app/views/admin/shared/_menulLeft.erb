@@ -1,0 +1,64 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <span class="brand-text font-weight-dark">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/admin/product_cats" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Products
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <%= link_to admin_product_cats_path, class: 'nav-link', :data => { :link => admin_product_cats_path }  do %>
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Index</p>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_admin_product_cat_path, class: 'nav-link', :data => { :link => new_admin_product_cat_path }  do %>
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create</p>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item">
+            <%= link_to admin_customers_path, class: 'nav-link', :data => { :link => admin_customers_path }  do %>
+              <i class="nav-icon fas fa-users"></i>
+              <p>Customer</p>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to admin_line_items_path, class: 'nav-link', :data => { :link => admin_line_items_path }  do %>
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>Shopping Cart</p>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

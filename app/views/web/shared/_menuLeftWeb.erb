@@ -1,0 +1,12 @@
+
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-muted">Product Cat</span>
+  <span class="badge badge-secondary badge-pill">3</span>
+</h4>
+<ul class="list-group mb-3">
+  <% @product_cats.each do |product_cat| %>
+    <li class="list-group-item d-flex justify-content-between lh-condensed">
+       <a href="#"><%= product_cat.name %></a>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Demo Shop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="/font/font-awsomes/css/all.min.css">
+    <link rel="alternate" type="application/rss+xml" title="Bootstrap Themes &raquo; Feed" href="https://themes.getbootstrap.com/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Bootstrap Themes &raquo; Comments Feed" href="https://themes.getbootstrap.com/comments/feed/" />
+  </head>
+
+  <body>
+  <%= custom_bootstrap_flash %>
+    <%# Header %>
+    <%= render 'web/shared/headerWeb'%>
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

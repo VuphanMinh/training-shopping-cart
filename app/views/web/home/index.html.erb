@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-8 block-center row">
+    <% @product_details.each do |product| %>
+      <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <%=  link_to web_product_path(product.id) do %>
+            <%= image_tag product.product_images.first&.url_img&.url, style: 'max-height:250px;', class: 'card-img-top' if product.product_images.present?%>
+          <% end %>
+          <div class="card-body">
+            <h5><%= product.name %></h5>
+            <div class="card-text">
+              <%= product.description.html_safe %>
+            </div>
+            <div class="text-muted">
+              <%= product.price %>VND
+            </div>
+          </div>
+          <form class="form-inline">
+            <input type="number" class="form-control col-sm-9">
+            <button type="submit" class="btn btn-primary col-sm-3"><i class="fas fa-shopping-basket"></i></button>
+          </form>
+          <%= button_to "Add #{product.name} to cart", web_line_items_path(:product_id => product.id) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 order-md-2 mb-4">
+     <%= render 'web/shared/menuLeftWeb'%>
+  </div>
+</div>

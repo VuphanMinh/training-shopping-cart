@@ -1,0 +1,19 @@
+I"º(function() {
+  $(function() {
+    var link, list, route;
+    route = $('#active_nav').val();
+    if (route) {
+      link = $('.sidebar').find('a[data-link=\'' + route + '\']');
+      link.addClass('active');
+      list = link.parents('li');
+      return list.each(function() {
+        var li;
+        li = $(this);
+        li.addClass('menu-open');
+        return li.find('a:first').addClass('active');
+      });
+    }
+  });
+
+}).call(this);
+:ET

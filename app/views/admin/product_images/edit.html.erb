@@ -1,0 +1,66 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Images</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item active">ユーザー詳細</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ========= Content ========= %>
+<section class="content">
+  <div class="container-fluid">
+    <div class="card p-3">
+
+      <%# <%= form_for (@product_image), url: admin_product_image_path, html: { method: :patch } do |f| %>
+      <%= form_tag(admin_product_image_path, :method => "patch", class: 'form-inline') do %>
+        <%= hidden_field_tag :product_detail_id, :value => params[:product_detail_id] %>
+        <%= hidden_field_tag :product_type, :value => 'product_detail' %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Upload</span>
+          </div>
+          <div class="custom-file">
+            <%= file_field_tag :url_img, class: 'custom-file-input', id: 'fileInput_contract', accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
+            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+          </div>
+        </div>
+        <div class="custom-group-button">
+          <button class="btn btn-secondary pl-3 pr-3" data-dismiss="modal" type="submit"> Cancel</button>
+          <%# <%= f.submit 'Save', class: 'btn btn-success pl-3 pr-3' %>
+          <button class="btn btn-success pl-3 pr-3" type="submit">Save</button>
+        </div>
+      <% end %>
+      <div class="mt-2">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">IMG</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @images.each do |image| %>
+                  <tr>
+                    <th scope="row"><%= image.id %></th>
+                    <td>
+                       <%= image_tag image.url_img, style: 'height:15%;width:auto;' if image.present?%>
+                    </td>
+                    <td>
+                      <%= link_to 'X', admin_product_image_path(image.id), class: "btn btn-danger" , method: :delete,  data: { confirm: "Are you sure ?" } %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+</section>

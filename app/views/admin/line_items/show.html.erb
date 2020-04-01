@@ -1,0 +1,57 @@
+
+<%# ========= HEAD ========= %>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Shopping cart detail</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <%# <li class="breadcrumb-item active">ユーザー詳細</li> %>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ========= Content ========= %>
+<section class="content">
+  <div class="container-fluid">
+    <div class="card p-3">
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @cart.line_items.each do |line_item| %>
+                <tr>
+                  <td><%= line_item.product_detail.name %></td>
+                  <td><%= number_to_currency(line_item.product_detail.price, unit: "vnd",format: "%n %u", precision: 0) %></td>
+                  <td><%= line_item.quantity %></td>
+                  <td><%= number_to_currency(line_item.total_price, unit: "vnd",format: "%n %u", precision: 0) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-12">
+          <h3>Total Quantity: <%= @cart.total_quantity %></h3>
+          <h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <%# <%= paginate @line_items %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+<div class="col-md-4 block-center">
+  <h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Sub total:<%= number_to_currency(@cart.sub_total) %></span>
+    <%= link_to "Empty cart", web_cart_path(@current_cart),class: "badge badge-secondary badge-pill",method: :delete, data: {confirm: "Are you sure?"} %>
+  </h4>
+  <ul class="list-group mb-3">
+    <% @cart.line_items.each do |line_item| %>
+      <li class="list-group-item d-flex justify-content-between bg-light">
+        <div class="text-success">
+          <h6 class="my-0">Item</h6>
+        </div>
+        <span class="text-success"> <%= line_item.product_detail.name %></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between bg-light">
+        <div class="text-success">
+          <h6 class="my-0">Price</h6>
+        </div>
+        <span class="text-success"> <%= number_to_currency(line_item.product_detail.price) %></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between bg-light">
+        <div class="text-success">
+          <h6 class="my-0">Quantity</h6>
+        </div>
+        <span class="text-success"> <%= line_item.quantity %></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <span>Total Price</span>
+        <strong><%= number_to_currency(line_item.total_price) %></strong>
+      </li>
+      <li>
+        <div class="d-flex bd-highlight mb-3">
+          <div class="p-2 bd-highlight">
+            <%= link_to web_line_item_add_path(:id => line_item), method: :post, class: "btn btn-success" do %>
+              <i class="fas fa-plus"></i>
+            <%end%>
+          </div>
+          <div class="p-2 bd-highlight">
+            <%= link_to web_line_item_reduce_path(:id => line_item), method: :post, class: "btn btn-success" do %>
+              <i class="fas fa-minus"></i>
+            <%end%>
+          </div>
+          <div class="ml-auto p-2 bd-highlight">
+            <%= link_to web_line_item_path(line_item), method: :delete, class: 'btn btn-warning' do %>
+              <i class="far fa-calendar-times"></i>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Back to shop', web_root_path %>
+</div>

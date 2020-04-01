@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Demo Shop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="/Alte_admin/adminlte.min.css" />
+    <link rel="stylesheet" href="/font/font-awsomes/css/all.min.css">
+  </head>
+
+  <body>
+  <%= custom_bootstrap_flash %>
+  <div class="wrapper">
+    <%# Header %>
+    <%= render 'admin/shared/header'%>
+    <%# menu left %>
+    <%= render 'admin/shared/menulLeft' %>
+    <%# Content-wrapper %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
+  </div>
+    <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.0.1-pre
+    </div>
+  </footer>
+    <script  src="/Alte_admin/adminlte.min.js"></script>
+    <script  src="/tiny_editor/tiny_editor.js"></script>
+    <script  src="/tiny_editor/themes/silver/theme.min.js"></script>
+    <script>
+    tinyMCE.init({
+        selector: '.tinyMCE',
+        mode: "specific_textareas",
+        branding: false,
+        menu: {
+          format: { title: "Format", items: "forecolor backcolor" }
+        },
+        height : "250px",
+        toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | fontsizeselect forecolor backcolor",
+        editor_selector: /(mceEditor|mceRichText)/
+    });
+    </script>
+  </body>
+</html>

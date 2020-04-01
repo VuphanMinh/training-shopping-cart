@@ -1,0 +1,82 @@
+<%# ========= HEAD ========= %>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Product Cat</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item active">ユーザー詳細</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# ========= Content ========= %>
+<section class="content">
+  <div class="container-fluid">
+    <div class="card p-3">
+      <div class="row mb-4">
+        <div class="col-md-6">
+
+          <%= form_tag(admin_product_cat_path, :method => "get", class: 'form-inline') do %>
+            <div class="input-group">
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+          <% end %>
+
+        </div>
+        <div class="col-md-6">
+          <%= link_to 'Create', new_admin_product_detail_path(:product_cat_id => params[:id]), class: 'btn btn-success pl-5 pr-5' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Discount</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @product_details.each do |product_detail| %>
+                <tr>
+                  <th scope="row"><%= product_detail.id %></th>
+                  <td><%= product_detail.name %></td>
+                  <td><%= product_detail.product_cat.typeProduct %></td>
+                  <td><%= product_detail.price %></td>
+                  <td><%= product_detail.discount %></td>
+                  <td>
+                      <%= image_tag product_detail.product_images.first&.url_img&.url, style: 'height:50px;width:auto;' if product_detail.product_images.present?%>
+                  </td>
+                  <td>
+                    <%= link_to  new_admin_product_image_path(:product_detail_id => product_detail.id), class: 'btn btn-secondary' do %>
+                      <i class="fas fa-images"></i>
+                    <% end %>
+                    <%= link_to 'Edit', edit_admin_product_detail_path(product_detail.id), class: 'btn btn-warning' %>
+                    <%= link_to 'X', admin_product_detail_path(product_detail.id), class: "btn btn-danger" , method: :delete,  data: { confirm: "Are you sure ?" } %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-12">
+          <div class="d-flex justify-content-center">
+            <%= paginate @product_details %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

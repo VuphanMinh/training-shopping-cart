@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'web/home#index'
 
   namespace :web do
     get 'products/index'
@@ -52,7 +53,6 @@ Rails.application.routes.draw do
   end
 
   namespace :web do
-    root to: 'home#index'
     resources :product_cats, only: [:show]
     resources :product_details, only: [:show]
     resources :orders

@@ -21,14 +21,6 @@
     <div class="card p-3">
       <div class="row mb-4">
         <div class="col-md-6">
-
-          <%= form_tag(admin_line_items_path, :method => "get", class: 'form-inline') do %>
-            <div class="input-group">
-              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </div>
-          <% end %>
-
         </div>
         <div class="col-md-6">
           <%# <%= link_to 'Create', new_admin_product_cat_path, class: 'btn btn-success pl-5 pr-5' %>

@@ -3,8 +3,7 @@ class Admin::LineItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @line_items = LineItem.joins(:customer).group("customer_id, cart_id")
-    .where("email LIKE :search", search: "%#{params[:search]}%")
+    @line_items = LineItem.joins(:customer)
     .order(created_at: :desc)
     .page(params[:page]).per(12)
   end

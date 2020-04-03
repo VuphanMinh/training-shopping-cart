@@ -20,7 +20,7 @@ class Web::OrdersController < ApplicationController
     @order.save
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
-    redirect_to web_root_path
+    redirect_to root_path
   end
 
   private

@@ -1,10 +1,8 @@
 class Web::ProductsController < ApplicationController
-  def index
-  end
+  layout 'layouts/design_web'
+  before_action :authenticate_customer!
 
-  def new
-  end
-
-  def edit
+  def show
+    @product_detail = ProductDetail.find(params[:id])
   end
 end

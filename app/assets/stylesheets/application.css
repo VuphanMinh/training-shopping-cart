@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require toastr
+ *= require style
  *= require boostrap.min
  *= require_self
  */

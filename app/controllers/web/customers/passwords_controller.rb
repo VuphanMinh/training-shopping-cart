@@ -2,9 +2,9 @@
 
 class Web::Customers::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/password
   # def create

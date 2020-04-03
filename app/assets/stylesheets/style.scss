@@ -1,0 +1,39 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.is-error{
+  display: inherit !important;
+}
+
+.block-center {
+  margin: 0px auto;
+}
+
+.card-img-top {
+  height: 42%;
+}
+
+.text-cart {
+  font-size: 24px;
+}
+
+.blockquote-custom {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fcecba;
+}
+
+.url-category {
+  font-size: 24px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.bg-darksalmon {
+  background-color: darksalmon;
+}

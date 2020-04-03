@@ -13,22 +13,6 @@ Rails.application.routes.draw do
     get 'products/edit'
   end
 
-  # namespace :web do
-  #   get 'orders/index'
-  # end
-
-  # namespace :web do
-  #   get 'orders/show'
-  # end
-
-  # namespace :web do
-  #   get 'orders/new'
-  # end
-
-  # namespace :web do
-  #   get 'carts/show'
-  # end
-
   devise_for :users, :controllers => {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -54,7 +38,6 @@ Rails.application.routes.draw do
 
   namespace :web do
     resources :product_cats, only: [:show]
-    resources :product_details, only: [:show]
     resources :orders
     resources :products
 

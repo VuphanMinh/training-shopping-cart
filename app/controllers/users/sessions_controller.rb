@@ -33,7 +33,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_up_path_for(resource)
-    return '' if resource.invalid?
     admin_admin_index_path
   end
 

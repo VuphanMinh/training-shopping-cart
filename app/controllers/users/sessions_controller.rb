@@ -32,10 +32,6 @@ class Users::SessionsController < Devise::SessionsController
     admin_admin_index_path
   end
 
-  def after_sign_up_path_for(resource)
-    admin_admin_index_path
-  end
-
   def after_sign_out_path_for(resource)
     new_user_session_path
   end

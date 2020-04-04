@@ -41,6 +41,8 @@ class Admin::ProductCatsController < ApplicationController
     @product_details = ProductDetail.where(product_cat_id: params[:id])
     .where("name LIKE :search", search: "%#{params[:search]}%")
     .page(params[:page]).per(12)
+    product_images = ProductImage.all
+
   end
 
   def destroy

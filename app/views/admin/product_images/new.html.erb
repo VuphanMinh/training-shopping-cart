@@ -4,11 +4,6 @@
       <div class="col-sm-6">
         <h1>Images</h1>
       </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item active">ユーザー詳細</li>
-        </ol>
-      </div>
     </div>
   </div>
 </section>
@@ -31,7 +26,7 @@
             </div>
           </div>
           <div class="custom-group-button">
-            <button class="btn btn-secondary pl-3 pr-3" data-dismiss="modal" type="submit"> Cancel</button>
+            <%= link_to 'Cancel',admin_product_cat_path(params[:product_detail_id]), class: 'btn btn-secondary pl-3 pr-3' %>
             <%= f.submit 'Save', class: 'btn btn-success pl-3 pr-3' %>
           </div>
         <% end %>

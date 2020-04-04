@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     post 'line_items' => "line_items#create"
     get 'line_items/:id' => "line_items#show", as: "line_item"
     delete 'line_items/:id' => "line_items#destroy"
+    # post 'line_items/booking' => "line_items#booking"
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

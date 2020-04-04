@@ -6,18 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# PRODUCT
-Product.destroy_all
-product1 = Product.create({:name=>"tomato", :price => 1})
-product2 = Product.create({:name=>"milk", :price => 3})
-product3 = Product.create({:name=>"bread", :price => 5.50})
-product4 = Product.create({:name=>"bacon", :price => 10})
-product5 = Product.create({:name=>"cheese", :price => 3.20})
+# PRODUCT CATEGORY
+ProductCat.destroy_all
+productcat1 = ProductCat.create({:id=>1, :name=>"Tea", :typeProduct=>"drink", :description=>"testing..."})
+productcat2 = ProductCat.create({:id=>2, :name=>"Milk Tea", :typeProduct=>"drink", :description=>"testing..."})
+productcat3 = ProductCat.create({:id=>3, :name=>"Fresh Drink", :typeProduct=>"drink", :description=>"testing..."})
 
-puts "Total number of products: #{Product.all.count}"
-puts "Product names: #{Product.all.pluck("name")}"
-puts "Product1: #{product1.name} price: #{product1.price.round(2)}"
-puts "Product2: #{product2.name} price: #{product2.price.round(2)}"
-puts "Product3: #{product3.name} price: #{product3.price.round(2)}"
-puts "Product4: #{product4.name} price: #{product4.price.round(2)}"
-puts "Product5: #{product5.name} price: #{product5.price.round(2)}"
+# PRODUCT DETAIL
+ProductDetail.destroy_all
+product1 = ProductDetail.create({:id=>1, :name=>"toocha 01", :description => "testing...", :details => "testing...", :price=>10000, :discount=>0, :product_cat_id=>1})
+product1 = ProductDetail.create({:id=>2, :name=>"toocha 02", :description => "testing...", :details => "testing...", :price=>12000, :discount=>0, :product_cat_id=>1})
+product1 = ProductDetail.create({:id=>3, :name=>"toocha 03", :description => "testing...", :details => "testing...", :price=>14000, :discount=>0, :product_cat_id=>2})
+product1 = ProductDetail.create({:id=>4, :name=>"toocha 04", :description => "testing...", :details => "testing...", :price=>16000, :discount=>0, :product_cat_id=>2})
+product1 = ProductDetail.create({:id=>5, :name=>"toocha 05", :description => "testing...", :details => "testing...", :price=>20000, :discount=>0, :product_cat_id=>2})
+
+# PRODUCT IMAGES
+ProductImage.destroy_all
+img1 = ProductImage.create({:id=>1, :product_detail_id=>1, :product_type => "product_detail", :url_img => "1.jpg"})
+img2 = ProductImage.create({:id=>2, :product_detail_id=>2, :product_type => "product_detail", :url_img => "2.jpg"})
+img3 = ProductImage.create({:id=>3, :product_detail_id=>3, :product_type => "product_detail", :url_img => "3.jpg"})
+img4 = ProductImage.create({:id=>4, :product_detail_id=>4, :product_type => "product_detail", :url_img => "4.jpg"})
+img5 = ProductImage.create({:id=>5, :product_detail_id=>5, :product_type => "product_detail", :url_img => "5.jpg"})

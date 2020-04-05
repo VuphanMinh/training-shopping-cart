@@ -12,7 +12,6 @@
 <section class="content">
   <div class="container-fluid">
     <div class="card p-3">
-
         <%= form_for (@product_image), url: admin_product_images_path, html: { method: :post } do |f| %>
           <%= f.hidden_field :product_detail_id, :value => params[:product_detail_id] %>
           <%= f.hidden_field :product_type, :value => 'product_detail' %>
@@ -23,6 +22,7 @@
             <div class="custom-file">
               <%= f.file_field :url_img, class: 'custom-file-input', id: 'fileInput_contract', accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
               <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              <%= show_error(@product_image, :url_img)  %>
             </div>
           </div>
           <div class="custom-group-button">

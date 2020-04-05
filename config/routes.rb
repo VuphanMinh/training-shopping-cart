@@ -15,12 +15,14 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
   }
 
   devise_for :customers, :controllers => {
     sessions: 'web/customers/sessions',
-    registrations: 'web/customers/registrations'
+    registrations: 'web/customers/registrations',
+    passwords: 'web/customers/passwords'
   }
 
   namespace :admin do

@@ -57,7 +57,7 @@
                   <td><%= product_detail.price %></td>
                   <td><%= product_detail.discount %></td>
                   <td>
-                      <%= image_tag product_detail.product_images.first&.url_img&.url, style: 'height:50px;width:auto;' if product_detail.product_images.present?%>
+                     <%= image_tag product_detail.product_images.first&.url_img&.url, style: 'height:50px;width:auto;' if product_detail.product_images.present?%>
                   </td>
                   <td>
                     <%= link_to  new_admin_product_image_path(:product_detail_id => product_detail.id), class: 'btn btn-secondary' do %>
